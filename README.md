@@ -2,7 +2,9 @@
 
 > 화이트햇 스쿨 3기 (13반) - [박세민 (@8sheeta8)](https://github.com/8sheeta8) 
 
+
 ## 개요
+
 
 Apache Superset은 데이터 탐색과 시각화를 위한 오픈소스 플랫폼입니다.
 Superset은 기본 설정으로 하드코딩된 SECRET_KEY 값을 사용합니다.
@@ -15,8 +17,10 @@ Superset은 기본 설정으로 하드코딩된 SECRET_KEY 값을 사용합니�
 참고:
 - <https://www.horizon3.ai/attack-research/disclosures/cve-2023-27524-insecure-default-configuration-in-apache-superset-leads-to-remote-code-execution/>
 - <https://github.com/horizon3ai/CVE-2023-27524>
+
   
 ## PoC GitHub
+
 
 ### 1. Docker를 이용한 취약 환경 구축
 
