@@ -1,4 +1,4 @@
-# CVE-2023-27524 - Apache Superset 인증 우회 취약점
+# CVE-2023-27524 - Apache Superset Authentication Bypass
 
 > 화이트햇 스쿨 3기 (13반) - [박세민 (@8sheeta8)](https://github.com/8sheeta8) 
 
